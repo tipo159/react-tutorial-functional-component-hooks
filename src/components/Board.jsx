@@ -12,7 +12,7 @@ const Board = (i) => {
     }
 
     const renderSquare = (i) => {
-        return <Square {squares[i]}  onClick={() => handleClick('X')} />;
+        return <Square value={squares[i]}  onClick={() => handleClick('X')} />;
     }
 
     const status = 'Next player: X';
