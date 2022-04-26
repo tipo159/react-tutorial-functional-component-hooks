@@ -5,8 +5,14 @@ import Square from './Square'
 const Board = (i) => {
     const [squares, setSquares] = useState(Array(9).fill(null));
 
+    const handleClick = (i) => {
+        const squares = squares.slice();
+        squares[i] = 'X';
+        setSquares({ squares });
+    }
+
     const renderSquare = (i) => {
-        return <Square {squares[i]} />;
+        return <Square {squares[i]}  onClick={() => handleClick('X')} />;
     }
 
     const status = 'Next player: X';

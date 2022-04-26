@@ -5,7 +5,7 @@ const Square = () => {
     const [state, setState] = useState(null);
 
     return (
-        <button className="square" onClick={() => setState('X')}>
+        <button className="square" onClick={onClick}>
             {state}
         </button>
     );
