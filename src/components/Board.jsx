@@ -1,7 +1,7 @@
 import React from 'react'
 import Square from './Square'
 
-const Board = ({ squares, xIsNext, onClick }) => {
+const Board = ({ squares, onClick }) => {
     const renderSquare = (i) => {
         return <Square
             value={squares[i]}

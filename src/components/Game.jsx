@@ -5,7 +5,7 @@ import Board from './Board'
 const Game = () => {
     const [history, setHistory] = useState([{ squares: Array(9).fill(null) }]);
     const [xIsNext, setXIsNext] = useState(true);
-    
+
     const handleClick = (i) => {
         const _history = history.slice();
         const current = _history[_history.length - 1];
@@ -21,6 +21,18 @@ const Game = () => {
     const _history = history.slice();
     const current = _history[_history.length - 1];
     const winner = calculateWinner(current.squares);
+
+    const moves = history.map((step, move) => {
+        const desc = move ?
+            'Go to move #' + move :
+            'Go to game start';
+        return (
+            <li>
+                <button onClick={() => this.jumpTo(move)}>{desc}</button>
+            </li>
+        );
+    });
+
     let status;
     if (winner) {
         status = 'Winner: ' + winner;
@@ -32,14 +44,13 @@ const Game = () => {
         <div className="game">
             <div className="game-board">
                 <Board
-                    squares = {current.squares}
-                    xIsNext = {xIsNext}
-                    onClick = {(i) => handleClick(i)}
-                 />
+                    squares={current.squares}
+                    onClick={(i) => handleClick(i)}
+                />
             </div>
             <div className="game-info">
                 <div>{status}</div>
-                <ol>{/* TODO */}</ol>
+                <ol>{moves}</ol>
             </div>
         </div>
     );
